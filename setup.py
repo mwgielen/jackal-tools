@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='jackal.tools',
+setup(name='jackal_tools',
       version='0.0.2',
       description='Tools for jackal.',
       author='Matthijs Gielen',
@@ -13,10 +13,10 @@ setup(name='jackal.tools',
       ],
       requires_python='>=3',
       url='https://github.com/mwgielen/jackal-tools/',
-      packages=['jackal.tools'],
+      packages=['jackal_tools'],
       install_requires=['jackal', 'psutil', 'scapy-python3'],
       entry_points={
           'console_scripts': [
-              'jk-sniffer = jackal.tools.sniffer:main',
+              'jk-sniffer = jackal_tools.sniffer:main',
           ]
       })

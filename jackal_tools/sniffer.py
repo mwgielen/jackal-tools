@@ -7,7 +7,7 @@ import psutil
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import ARP, TCP, UDP, sniff
 
-from jackal import HostDoc, HostSearch, RangeDoc, RangeSearch
+from jackal import Host, HostSearch, Range, RangeSearch
 from jackal.utils import print_error, print_notification, print_success
 
 
@@ -61,7 +61,7 @@ class Sniffer(object):
         """
         if not ip in self.ip_list:
             self.ip_list.add(ip)
-            doc = HostDoc(address=ip)
+            doc = Host(address=ip)
             doc.add_tag('sniffer')
             self.hs.merge(doc)
             print_success("New ip address: {}".format(ip))
@@ -72,7 +72,7 @@ class Sniffer(object):
         """
         if not ip_range in self.ip_ranges:
             self.ip_ranges.add(ip_range)
-            doc = RangeDoc(range=ip_range)
+            doc = Range(range=ip_range)
             doc.add_tag('sniffer')
             self.rs.merge(doc)
             print_success("New ip range: {}".format(ip_range))
