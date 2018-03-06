@@ -61,9 +61,9 @@ class Sniffer(object):
         """
         if not ip in self.ip_list:
             self.ip_list.add(ip)
-            doc = Host(address=ip)
-            doc.add_tag('sniffer')
-            self.hs.merge(doc).save()
+            host = self.hs.id_to_object(ip)
+            host.add_tag('sniffer')
+            host.save()
             print_success("New ip address: {}".format(ip))
 
     def new_range(self, ip_range):
@@ -72,9 +72,9 @@ class Sniffer(object):
         """
         if not ip_range in self.ip_ranges:
             self.ip_ranges.add(ip_range)
-            doc = Range(range=ip_range)
+            doc = self.rs.id_to_object(ip_range)
             doc.add_tag('sniffer')
-            self.rs.merge(doc).save()
+            doc.save()
             print_success("New ip range: {}".format(ip_range))
 
     def start(self):

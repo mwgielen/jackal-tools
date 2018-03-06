@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='jackal_tools',
-      version='0.0.2',
+      version='0.0.3',
       description='Tools for jackal.',
       author='Matthijs Gielen',
       author_email='github@mwgielen.com',
