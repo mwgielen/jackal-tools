@@ -77,14 +77,17 @@ class Sniffer(object):
             doc.save()
             print_success("New ip range: {}".format(ip_range))
 
-    def start(self):
+    def start(self, timeout=None):
         """
             Starts the sniffing
         """
-        print_notification("Starting sniffer")
+        if timeout:
+            print_notification("Starting sniffer for {} seconds".format(timeout))
+        else:
+            print_notification("Starting sniffer")
         print_notification("Press ctrl-c to stop sniffing")
         try:
-            sniff(prn=self.callback, store=0)
+            sniff(prn=self.callback, store=0, timeout=timeout)
         except PermissionError:
             print_error("Please run this tool as root")
 
